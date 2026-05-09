@@ -1,0 +1,11 @@
+# Streamlit App
+streamlit
+pandas
+pymysql
+tqdm
+
+# Notebook / API Data Collection
+requests
+
+# Standard library (no install needed but listed for clarity)
+# json, os, time, datetime — built into Python
