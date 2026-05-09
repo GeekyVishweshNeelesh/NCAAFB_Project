@@ -1,0 +1,85 @@
+conference_id,name,alias
+49602742-5d66-412e-8a58-ab1e613d593c,American,AAC
+359cd6eb-de34-4ae2-90a2-6e80e4d4ff62,Conference USA,CONFERENCE-USA
+82fb0ec0-4f49-4ab9-9bcc-fe782b015210,Mountain West,MOUNTAIN-WEST
+c7a491c8-d0f2-4ca1-9403-f82db4452dd1,Southeastern,SEC
+7a56b889-96ba-4ec2-8fe0-0b2091ff05ac,Coastal Athletic Association,CAA
+8fd1a800-657d-4391-ab1d-6abdd05645cc,Big Sky,BIG-SKY
+50a92c00-888a-40c3-b223-9624dec9f2bd,Sooner Athletic Conference,SOONER
+2d58e0bd-e249-48f5-b531-c22f5cf6e264,Gulf South Conference,GSC
+29a74ca3-7c09-4d54-8d0f-62c15ee03cdc,Minnesota Intercollegiate Athletic Conference,MIAC
+cddff7c9-65e1-4fe0-b052-87fd4213fbfe,Big Ten,BIG-TEN
+b42fbccc-5182-40bf-8d99-213a80dcf327,Pennsylvania State Athletic Conference,PSAC
+663b118f-d664-4fd2-adea-7dbd1f997e12,Mountain East Conference,MEC
+252b1211-a36c-4184-b229-d8d121610024,USA South Athletic Conference,USA-SOUTH
+c320231c-eec0-4b9c-b09e-016280763cf2,Pioneer,PIONEER
+442a3894-7884-4de6-b564-f9c44ddb4a04,Mid-America Intercollegiate Athletics Association,MIAA
+cd553725-acbe-496a-bae9-ed8ab6456a50,Great Lakes Valley Conference,GLVC
+f1095195-822c-4ecd-b96a-565a4da3b796,Big 12,BIG-12
+151998c5-80e4-466f-aafe-0c25eb62de75,South Atlantic Conference,SAC
+327bb2ce-9582-4e8e-adcb-d297ed656d32,Central Intercollegiate Athletic Association,CIAA
+6973b296-7d94-4d07-9f83-c9576b315f91,Mid Eastern Athletic,MEAC
+9ff5f231-e383-11ed-951e-a5f529384569,United Athletic,UAC
+a15aa3a4-6fc3-4a25-be98-d0059836a060,Southern,SOUTHERN
+f9da8a38-d704-4a62-83fd-22ad5758446b,Ivy,IVY
+310a49d2-421b-4f00-9b6c-2e5cf312c9f6,Frontier Conference,FRONTIER
+eb7f8197-a82d-4ab3-831b-5a2c647618e0,Mid-South Conference,MID-SOUTH
+a3dc8d14-691d-4919-8b16-28c3f121901d,Northern Sun Intercollegiate Conference,NSIC
+e36e74d3-fe2d-4379-a283-4eafa01202f4,Pac-12,PAC-12
+9a47496a-d965-4a65-b2cc-b5e46081af56,Liberty League,Liberty
+eecdc945-d69b-489a-99e4-a2d2bb16bb24,Great American Conference,GAC
+034e3dea-6190-45d6-8dc6-ca52ba2d65c0,Patriot League,PATRIOT-LEAGUE
+74a45343-e6fa-4b5d-94f0-555d8579d2c3,Missouri Valley,MISSOURI-VALLEY
+2170ce1b-7bce-4645-a5d9-1c11f6454c94,Atlantic Coast,ACC
+f8037397-7826-4ad9-a5d4-15868fae76df,Northeast,NORTHEAST
+4315f6ac-97c0-49a6-b218-a8768ab65ea7,Mid-American,MID-AMERICAN
+b47f1b7f-3fb9-45e0-b9bc-639d729b733c,Sun Belt,SUN-BELT
+261eaf93-7726-4749-8581-06233b125d98,The Sun Conference,TSC
+f0db0541-14bf-11f0-9228-c53d5810e49b,Conference Carolinas,CC
+9a657291-adc4-4a55-8e94-a2063d4b03c5,Southwestern Athletic,SWAC
+a8b3bd39-35da-4734-be6e-b45f93ad0626,Great Plains Athletic Conference,GPAC
+84a842c1-e82f-11ed-b016-0fa2d9c64913,Big South-OVC,BIG-SOUTH-OVC
+9c49443e-fa63-446e-8b87-9e5d369c8392,Lone Star Conference,LSC
+fd3b549b-4ae8-47da-b456-2519d83e133d,Continental Athletic Conference,CAC
+65e9fcaf-9ab3-484c-a238-150424c38159,Great Lakes Intercollegiate Athletic Conference,GLIAC
+4a45ecd1-578f-4928-a42f-0e8a7ff08947,Michigan Intercollegiate Athletic Conference,MICAA
+68307cdb-1510-49f9-a185-5e0811d0368d,Appalachian Athletic Conference,APAC
+a11713f3-245d-4a16-a1a0-0c23e194f6ba,Empire 8,E8
+ce2159f5-1b3c-438e-acb9-e6e61b597c71,New England Women's and Men's Athletic Conference,NEWMAC
+499f3a80-13bc-4efa-8297-02a3383bb620,Southland,SOUTHLAND
+9d92d688-32ef-4cd4-855f-49f3214d9413,Mid-States Football Association,MSFA
+74997452-1234-43f9-8903-a1da76d6d591,Great Midwest Athletic Conference,G-MAC
+29c942eb-1c30-4314-a6d7-305aaffab269,IAA Independents,IAA-INDEPENDENTS
+5ea721b5-367a-499e-9a53-ef761087b8d7,Great Northwest Athletic Conference,GNAC
+0640b507-31ce-453e-9a0e-675705aa5062,North Star Athletic Association,NORTH-STAR
+290e49a9-257c-45a8-99d2-296c13f247e7,Chicagoland Collegiate Athletic Conference,CCAC
+201ef749-4ed4-4474-88ce-91bc1119436e,Rocky Mountain Athletic Conference,RMAC
+cf3cc2c8-47ef-418d-8a25-94ab97588c37,Southern Intercollegiate Athletic Conference,SIAC
+ab0298d3-527e-40c8-ae4b-f328e5303aa6,USCAA Independents,USCAA-INDEPENDENTS
+9d902831-dd08-11ec-a337-29caafc3cd3a,Central Atlantic Collegiate Conference,CACC
+761bddcb-89e4-4ba7-9bc9-6d5dce0af9fa,Wisconsin Athletic Conference,WIAC
+576b61f7-e51b-4e3e-aee3-d377d45be229,Southern States Athletic Conference,SSAC
+e89a7459-c99d-4148-a4a1-20ed74a1deb0,Heart of America Athletic Conference,HAAC
+74cb3095-362a-4c90-8c61-24b979a0df6c,Northeast-10,NE-10
+bd2f1da4-a5b6-4047-9494-612df34e9091,IA Independents,IA-INDEPENDENTS
+0b87cfb1-c1c5-4033-bbc2-4890d344b97f,New England Football Conference,NEFC
+6bf1311a-2333-4548-be17-8f1aa14f8e4d,Heartland Conference,HCAC
+fff9432f-ae89-423a-8e0f-72a4562fe236,Southern California Intercollegiate Conference,SCIAC
+e602d087-f616-4805-99b6-3e24a524561b,Red River Athletic Conference,RED-RIVER
+d57dc97d-1c5f-4783-9900-5f5958ded436,North Coast Athletic Conference,NCAC
+f2ca3f96-4628-46e4-95c0-444cab0effef,Kansas Collegiate Athletic Conference,KCAC
+8f93d492-a152-4251-b81f-635774c0d14a,Cascade Collegiate Conference,CASCADE
+a738a0f0-d2a2-4a42-b2ec-8e5c1b101e2e,California Pacific Conference,CAL-PAC
+cebd2176-c0ab-49d6-a98b-fd58048029b3,Southern Athletic Association,SAA
+7f891013-f048-4208-bf07-958075d62ca4,Eastern Collegiate Football Conference,ECFC
+44aadfd0-d35b-4a15-b4fc-4330d4ce6071,Old Dominion Athletic Conference,ODAC
+1bc171c1-fa1e-11ef-a78f-778dbdf44fb0,New South Athletic Conference,NSAC
+5cef910f-3897-4386-913e-ca840553dd24,Upper Midwest Athletic Conference,UMAC
+293891fe-afce-43cf-85be-3bef7a0f9491,Midwest Conference,MWC
+5b0d932e-2cf4-4a19-a2fd-e6e3d6ee8e7a,American Midwest Conference,AMC
+cf057f51-1f23-4afc-a6d7-679e9cf55018,Midwest Collegiate Conference,MCC
+b43d0cd2-5c9e-45ba-af85-35a2dcedafa8,Presidents Athletic Conference,PAC
+916db4a1-2ed8-4373-b867-bbd8236f68e3,Gulf Coast Athletic Conference,GCAC
+fb267c5d-cfce-41ca-b67f-8ba05d687961,American Southwest Conference,ASC
+bdce7519-79e3-4b7a-9148-a497bca7b8db,Division III Independents,D3-INDEPENDENTS
+5252072c-ad6c-4acc-80e7-6c24c87c7043,Massachusetts State Collegiate Athletic Conference,MASCAC
