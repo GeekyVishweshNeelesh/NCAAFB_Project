@@ -41,6 +41,14 @@ NCAAFB_Project/
 └── README.md                    # Project documentation
 ```
 
+
+## 🌐 Live Demo
+ 
+The app is deployed and live on Streamlit Cloud:
+ 
+**🔗 [https://ncaafbapp-project.streamlit.app/](https://ncaafbapp-project.streamlit.app/)**
+ 
+
 ---
 
 ## ⚙️ Prerequisites
