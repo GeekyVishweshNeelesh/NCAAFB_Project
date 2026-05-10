@@ -70,19 +70,17 @@ st.markdown("""
 # LOAD DATA
 # ===========================
 
-DATA_DIR = "data"
-
 @st.cache_data
 def load_all():
-    teams       = read_csv("teams.csv")
-    venues      = read_csv("venues.csv")
-    conferences = read_csv("conferences.csv")
-    players     = read_csv("players.csv")
-    coaches     = read_csv("coaches.csv")
-    seasons     = read_csv("seasons.csv")
-    rankings    = read_csv("rankings.csv")
-    divisions   = read_csv("divisions.csv")
-    stats       = read_csv("player_statistics.csv")
+    teams       = pd.read_csv("data/teams.csv",             dtype=str).fillna("")
+    venues      = pd.read_csv("data/venues.csv",            dtype=str).fillna("")
+    conferences = pd.read_csv("data/conferences.csv",       dtype=str).fillna("")
+    players     = pd.read_csv("data/players.csv",           dtype=str).fillna("")
+    coaches     = pd.read_csv("data/coaches.csv",           dtype=str).fillna("")
+    seasons     = pd.read_csv("data/seasons.csv",           dtype=str).fillna("")
+    rankings    = pd.read_csv("data/rankings.csv",          dtype=str).fillna("")
+    divisions   = pd.read_csv("data/divisions.csv",         dtype=str).fillna("")
+    stats       = pd.read_csv("data/player_statistics.csv", dtype=str).fillna("")
 
     # ── Build dict maps to avoid merge column conflicts ──
     conf_id_to_name  = dict(zip(conferences["conference_id"], conferences["name"]))
