@@ -70,12 +70,7 @@ st.markdown("""
 # LOAD DATA
 # ===========================
 
-# Auto-detect: use data/ folder if it exists, otherwise look in root
-DATA_DIR = "data" if os.path.exists("data") else "."
-
-def read_csv(filename):
-    """Read CSV — works whether files are in data/ or root."""
-    return pd.read_csv(os.path.join(DATA_DIR, filename), dtype=str).fillna("")
+DATA_DIR = "data"
 
 @st.cache_data
 def load_all():
@@ -89,38 +84,36 @@ def load_all():
     divisions   = read_csv("divisions.csv")
     stats       = read_csv("player_statistics.csv")
 
-    # Convert numeric columns
-    for col in ["capacity"]:
-        venues[col] = pd.to_numeric(venues[col], errors="coerce")
-    rankings["rank"] = pd.to_numeric(rankings["rank"], errors="coerce")
-    rankings["week"] = pd.to_numeric(rankings["week"], errors="coerce")
-    rankings["points"]   = pd.to_numeric(rankings["points"],   errors="coerce")
-    rankings["fp_votes"] = pd.to_numeric(rankings["fp_votes"], errors="coerce")
+    # ── Build dict maps to avoid merge column conflicts ──
+    conf_id_to_name  = dict(zip(conferences["conference_id"], conferences["name"]))
+    conf_id_to_alias = dict(zip(conferences["conference_id"], conferences["alias"]))
+    div_id_to_name   = dict(zip(divisions["division_id"],     divisions["name"]))
+    div_id_to_alias  = dict(zip(divisions["division_id"],     divisions["alias"]))
+    venue_id_to_name = dict(zip(venues["venue_id"],           venues["name"]))
+    venue_id_to_city = dict(zip(venues["venue_id"],           venues["city"]))
+    venue_id_to_state= dict(zip(venues["venue_id"],           venues["state"]))
+    team_id_to_name  = dict(zip(teams["team_id"],             teams["name"]))
+    team_id_to_market= dict(zip(teams["team_id"],             teams["market"]))
 
-    # ── Build lookup tables ──
-    conf_lookup = conferences[["conference_id","name","alias"]].copy()
-    conf_lookup.columns = ["conference_id","conference_name","conference_alias"]
+    # ── Add columns to teams using map ──
+    teams["conference_name"]  = teams["conference_id"].map(conf_id_to_name).fillna("")
+    teams["conference_alias"] = teams["conference_id"].map(conf_id_to_alias).fillna("")
+    teams["division_name"]    = teams["division_id"].map(div_id_to_name).fillna("")
+    teams["division_alias"]   = teams["division_id"].map(div_id_to_alias).fillna("")
+    teams["venue_name"]       = teams["venue_id"].map(venue_id_to_name).fillna("")
+    teams["venue_city"]       = teams["venue_id"].map(venue_id_to_city).fillna("")
+    teams["venue_state"]      = teams["venue_id"].map(venue_id_to_state).fillna("")
 
-    div_lookup = divisions[["division_id","name","alias"]].copy()
-    div_lookup.columns = ["division_id","division_name","division_alias"]
+    # ── Add team info to players using map ──
+    conf_via_team = dict(zip(teams["team_id"], teams["conference_name"]))
+    players["team_name"]       = players["team_id"].map(team_id_to_name).fillna("")
+    players["team_market"]     = players["team_id"].map(team_id_to_market).fillna("")
+    players["conference_name"] = players["team_id"].map(conf_via_team).fillna("")
 
-    venue_lookup = venues[["venue_id","name","city","state"]].copy()
-    venue_lookup.columns = ["venue_id","venue_name","venue_city","venue_state"]
-
-    # ── Merge into teams ──
-    teams = teams.merge(conf_lookup,  on="conference_id", how="left")
-    teams = teams.merge(div_lookup,   on="division_id",   how="left")
-    teams = teams.merge(venue_lookup, on="venue_id",      how="left")
-    teams.fillna("", inplace=True)
-
-    # ── Build team lookup ──
-    team_lookup = teams[["team_id","name","market","conference_name"]].copy()
-    team_lookup.columns = ["team_id","team_name","team_market","conference_name"]
-
-    # ── Merge players and coaches with team info ──
-    players  = players.merge(team_lookup, on="team_id", how="left").fillna("")
-    coaches  = coaches.merge(team_lookup, on="team_id", how="left").fillna("")
-    rankings.fillna("", inplace=True)
+    # ── Add team info to coaches using map ──
+    coaches["team_name"]       = coaches["team_id"].map(team_id_to_name).fillna("")
+    coaches["team_market"]     = coaches["team_id"].map(team_id_to_market).fillna("")
+    coaches["conference_name"] = coaches["team_id"].map(conf_via_team).fillna("")
 
     # ── Convert numeric columns in rankings ──
     rankings["rank"]     = pd.to_numeric(rankings["rank"],     errors="coerce")
