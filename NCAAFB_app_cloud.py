@@ -70,19 +70,24 @@ st.markdown("""
 # LOAD DATA
 # ===========================
 
-DATA_DIR = "data"
+# Auto-detect: use data/ folder if it exists, otherwise look in root
+DATA_DIR = "data" if os.path.exists("data") else "."
+
+def read_csv(filename):
+    """Read CSV — works whether files are in data/ or root."""
+    return pd.read_csv(os.path.join(DATA_DIR, filename), dtype=str).fillna("")
 
 @st.cache_data
 def load_all():
-    teams       = pd.read_csv(os.path.join(DATA_DIR, "1_teams.csv"),               dtype=str).fillna("")
-    venues      = pd.read_csv(os.path.join(DATA_DIR, "2_venues.csv"),              dtype=str).fillna("")
-    conferences = pd.read_csv(os.path.join(DATA_DIR, "3_conferences.csv"),         dtype=str).fillna("")
-    players     = pd.read_csv(os.path.join(DATA_DIR, "4_players.csv"),             dtype=str).fillna("")
-    coaches     = pd.read_csv(os.path.join(DATA_DIR, "5_coaches.csv"),             dtype=str).fillna("")
-    seasons     = pd.read_csv(os.path.join(DATA_DIR, "6_seasons.csv"),             dtype=str).fillna("")
-    rankings    = pd.read_csv(os.path.join(DATA_DIR, "7_rankings.csv"),            dtype=str).fillna("")
-    divisions   = pd.read_csv(os.path.join(DATA_DIR, "8_divisions.csv"),           dtype=str).fillna("")
-    stats       = pd.read_csv(os.path.join(DATA_DIR, "9_player_statistics.csv"),   dtype=str).fillna("")
+    teams       = read_csv("teams.csv")
+    venues      = read_csv("venues.csv")
+    conferences = read_csv("conferences.csv")
+    players     = read_csv("players.csv")
+    coaches     = read_csv("coaches.csv")
+    seasons     = read_csv("seasons.csv")
+    rankings    = read_csv("rankings.csv")
+    divisions   = read_csv("divisions.csv")
+    stats       = read_csv("player_statistics.csv")
 
     # Convert numeric columns
     for col in ["capacity"]:
@@ -92,30 +97,36 @@ def load_all():
     rankings["points"]   = pd.to_numeric(rankings["points"],   errors="coerce")
     rankings["fp_votes"] = pd.to_numeric(rankings["fp_votes"], errors="coerce")
 
-    # Join teams with conferences, divisions, venues
-    teams = (teams
-        .merge(conferences.rename(columns={"name": "conference_name", "alias": "conference_alias"}),
-               on="conference_id", how="left")
-        .merge(divisions.rename(columns={"name": "division_name", "alias": "division_alias"}),
-               on="division_id", how="left")
-        .merge(venues[["venue_id","name","city","state"]].rename(columns={"name": "venue_name"}),
-               on="venue_id", how="left")
-    )
+    # ── Build lookup tables ──
+    conf_lookup = conferences[["conference_id","name","alias"]].copy()
+    conf_lookup.columns = ["conference_id","conference_name","conference_alias"]
+
+    div_lookup = divisions[["division_id","name","alias"]].copy()
+    div_lookup.columns = ["division_id","division_name","division_alias"]
+
+    venue_lookup = venues[["venue_id","name","city","state"]].copy()
+    venue_lookup.columns = ["venue_id","venue_name","venue_city","venue_state"]
+
+    # ── Merge into teams ──
+    teams = teams.merge(conf_lookup,  on="conference_id", how="left")
+    teams = teams.merge(div_lookup,   on="division_id",   how="left")
+    teams = teams.merge(venue_lookup, on="venue_id",      how="left")
     teams.fillna("", inplace=True)
 
-    # Join players with team info
-    players = players.merge(
-        teams[["team_id","name","market","conference_name"]].rename(
-            columns={"name": "team_name", "market": "team_market"}),
-        on="team_id", how="left"
-    ).fillna("")
+    # ── Build team lookup ──
+    team_lookup = teams[["team_id","name","market","conference_name"]].copy()
+    team_lookup.columns = ["team_id","team_name","team_market","conference_name"]
 
-    # Join coaches with team + conference
-    coaches = coaches.merge(
-        teams[["team_id","name","market","conference_name"]].rename(
-            columns={"name": "team_name", "market": "team_market"}),
-        on="team_id", how="left"
-    ).fillna("")
+    # ── Merge players and coaches with team info ──
+    players  = players.merge(team_lookup, on="team_id", how="left").fillna("")
+    coaches  = coaches.merge(team_lookup, on="team_id", how="left").fillna("")
+    rankings.fillna("", inplace=True)
+
+    # ── Convert numeric columns in rankings ──
+    rankings["rank"]     = pd.to_numeric(rankings["rank"],     errors="coerce")
+    rankings["week"]     = pd.to_numeric(rankings["week"],     errors="coerce")
+    rankings["points"]   = pd.to_numeric(rankings["points"],   errors="coerce")
+    rankings["fp_votes"] = pd.to_numeric(rankings["fp_votes"], errors="coerce")
 
     return teams, venues, conferences, players, coaches, seasons, rankings, divisions, stats
 
